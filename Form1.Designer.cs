@@ -46,13 +46,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelCarpeta = new System.Windows.Forms.Label();
+            this.labelCarpetaValue = new System.Windows.Forms.Label();
+            this.buttonCarpeta = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(30, 175);
+            this.progressBar1.Location = new System.Drawing.Point(30, 209);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar1.Maximum = 999;
             this.progressBar1.Name = "progressBar1";
@@ -63,7 +67,7 @@
             // 
             // buttonGenerar
             // 
-            this.buttonGenerar.Location = new System.Drawing.Point(484, 108);
+            this.buttonGenerar.Location = new System.Drawing.Point(497, 108);
             this.buttonGenerar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGenerar.Name = "buttonGenerar";
             this.buttonGenerar.Size = new System.Drawing.Size(100, 28);
@@ -86,7 +90,7 @@
             // 
             this.buttonCancel.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.buttonCancel.Enabled = false;
-            this.buttonCancel.Location = new System.Drawing.Point(484, 57);
+            this.buttonCancel.Location = new System.Drawing.Point(497, 56);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 28);
@@ -99,17 +103,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(11, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 15);
+            this.label1.Size = new System.Drawing.Size(81, 16);
             this.label1.TabIndex = 8;
             this.label1.Text = "HTTP Inicial";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 35);
+            this.label2.Location = new System.Drawing.Point(11, 34);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 16);
@@ -119,7 +122,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 61);
+            this.label3.Location = new System.Drawing.Point(11, 62);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 16);
@@ -138,15 +141,17 @@
             // 
             // textBoxHTTP
             // 
-            this.textBoxHTTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxHTTP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxHTTP.HideSelection = false;
             this.textBoxHTTP.Location = new System.Drawing.Point(115, 7);
             this.textBoxHTTP.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxHTTP.Name = "textBoxHTTP";
-            this.textBoxHTTP.Size = new System.Drawing.Size(564, 21);
+            this.textBoxHTTP.Size = new System.Drawing.Size(564, 22);
             this.textBoxHTTP.TabIndex = 0;
             // 
             // textBoxPrefijo
             // 
+            this.textBoxPrefijo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPrefijo.Location = new System.Drawing.Point(115, 32);
             this.textBoxPrefijo.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPrefijo.Name = "textBoxPrefijo";
@@ -155,15 +160,18 @@
             // 
             // numericUpDownCantidad
             // 
+            this.numericUpDownCantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numericUpDownCantidad.Location = new System.Drawing.Point(140, 84);
+            this.numericUpDownCantidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDownCantidad.Name = "numericUpDownCantidad";
-            this.numericUpDownCantidad.Size = new System.Drawing.Size(178, 22);
+            this.numericUpDownCantidad.Size = new System.Drawing.Size(179, 22);
             this.numericUpDownCantidad.TabIndex = 3;
+            this.numericUpDownCantidad.ValueChanged += new System.EventHandler(this.numericUpDownCantidad_ValueChanged);
             // 
             // labelUltimo
             // 
             this.labelUltimo.AutoSize = true;
-            this.labelUltimo.Location = new System.Drawing.Point(11, 142);
+            this.labelUltimo.Location = new System.Drawing.Point(12, 172);
             this.labelUltimo.Name = "labelUltimo";
             this.labelUltimo.Size = new System.Drawing.Size(0, 16);
             this.labelUltimo.TabIndex = 12;
@@ -181,23 +189,53 @@
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Items.AddRange(new object[] {
-            "PDF",
-            "PNG"});
             this.comboBox1.Location = new System.Drawing.Point(140, 110);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(178, 24);
+            this.comboBox1.Size = new System.Drawing.Size(177, 24);
             this.comboBox1.TabIndex = 4;
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // labelCarpeta
+            // 
+            this.labelCarpeta.AutoSize = true;
+            this.labelCarpeta.Location = new System.Drawing.Point(12, 142);
+            this.labelCarpeta.Name = "labelCarpeta";
+            this.labelCarpeta.Size = new System.Drawing.Size(55, 16);
+            this.labelCarpeta.TabIndex = 14;
+            this.labelCarpeta.Text = "Carpeta";
+            // 
+            // labelCarpetaValue
+            // 
+            this.labelCarpetaValue.AutoEllipsis = true;
+            this.labelCarpetaValue.Location = new System.Drawing.Point(115, 142);
+            this.labelCarpetaValue.Name = "labelCarpetaValue";
+            this.labelCarpetaValue.Size = new System.Drawing.Size(482, 16);
+            this.labelCarpetaValue.TabIndex = 15;
+            this.labelCarpetaValue.Text = "Valor carpeta";
+            // 
+            // buttonCarpeta
+            // 
+            this.buttonCarpeta.Location = new System.Drawing.Point(614, 134);
+            this.buttonCarpeta.Name = "buttonCarpeta";
+            this.buttonCarpeta.Size = new System.Drawing.Size(89, 31);
+            this.buttonCarpeta.TabIndex = 6;
+            this.buttonCarpeta.Text = "Seleccione";
+            this.buttonCarpeta.UseVisualStyleBackColor = true;
+            this.buttonCarpeta.Click += new System.EventHandler(this.buttonCarpeta_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 211);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(715, 254);
+            this.Controls.Add(this.buttonCarpeta);
+            this.Controls.Add(this.labelCarpetaValue);
+            this.Controls.Add(this.labelCarpeta);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.labelUltimo);
@@ -244,6 +282,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label labelCarpeta;
+        private System.Windows.Forms.Label labelCarpetaValue;
+        private System.Windows.Forms.Button buttonCarpeta;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
